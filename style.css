@@ -215,68 +215,64 @@ input:focus, select:focus { border-color: #5c0000; outline: none; }
 .btn-submit { background-color: #5c0000; color: white; border: none; padding: 15px 40px; font-size: 1.1rem; border-radius: 5px; cursor: pointer; transition: background-color 0.3s, transform 0.2s; }
 .btn-submit:hover { background-color: #800000; transform: scale(1.05); }
 
-/* --- FOOTER CORRIGÉ --- */
+/* --- FOOTER FINAL (Centré) --- */
 footer {
     background-color: #5c0000;
-    padding: 20px 40px;
+    padding: 30px 20px;
     margin-top: auto;
     display: flex;
-    flex-direction: column; /* On empile verticalement */
-    align-items: center;
-    gap: 20px;
+    flex-direction: column; /* On empile tout : Logo > Icônes > Texte */
+    align-items: center;    /* Tout est parfaitement centré */
+    justify-content: center;
+    gap: 25px;              /* Espace propre entre les éléments */
+    border-top: 4px solid #3d0000; /* Petite finition premium en haut */
 }
 
-.footer-top {
-    display: flex;
-    justify-content: space-around;
-    width: 100%;
-    align-items: center;
-    max-width: 1200px;
-}
-
+/* Logo */
 .footer-logo { 
     width: 90px; 
     height: 90px; 
     border-radius: 50%; 
     object-fit: cover; 
-    border: 2px solid #ffffff50; 
+    border: 3px solid rgba(255, 255, 255, 0.2); 
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
 }
 
+/* Icônes */
 .social-icons { 
     display: flex; 
-    gap: 25px; 
+    gap: 30px; /* Espace entre les réseaux */
     align-items: center; 
 }
 
 .social-icons img { 
-    width: 45px; 
-    height: 45px; 
+    width: 40px; 
+    height: 40px; 
     object-fit: contain; 
-    border-radius: 10px; 
-    transition: transform 0.2s ease; 
+    border-radius: 8px; 
+    transition: transform 0.3s ease; 
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
 }
 
 .social-icons img:hover { 
-    transform: scale(1.2) rotate(5deg); 
+    transform: scale(1.15) rotate(5deg); 
 }
 
-.footer-legal {
-    width: 100%;
-    text-align: center;
-    padding-top: 15px;
-    border-top: 1px solid rgba(255, 204, 204, 0.2);
-}
-
+/* Lien Mentions Légales */
 .footer-legal a {
-    color: #ffcccc;
+    color: #ffcccc !important; /* !important force la couleur rose pâle */
     text-decoration: none;
-    font-size: 0.85rem;
-    transition: color 0.3s ease;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    opacity: 0.8;
+    transition: opacity 0.3s;
+    border-bottom: 1px dotted transparent;
 }
 
 .footer-legal a:hover {
-    color: #fff;
-    text-decoration: underline;
+    opacity: 1;
+    border-bottom: 1px dotted #ffcccc;
 }
 
 @media (max-width: 900px) {
@@ -298,3 +294,4 @@ footer {
     /* Footer Mobile */
     .footer-top { flex-direction: column; gap: 20px; }
 }
+
