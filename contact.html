@@ -118,5 +118,57 @@
             </a>
         </div>
     </footer>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    
+    <script type="text/javascript">
+       (function(){
+          // Initialisation avec ta Public Key
+          emailjs.init("1jLEfuyrnDxYev4-k");
+       })();
+    
+       document.getElementById('contact-form').addEventListener('submit', function(event) {
+           event.preventDefault(); // Bloque le rechargement de page
+    
+           const btn = this.querySelector('.btn-submit');
+           const msgBox = document.getElementById('msg-box');
+           
+           // Indication visuelle (Chargement)
+           const originalText = btn.innerText;
+           btn.innerText = 'Envoi en cours...';
+           btn.disabled = true;
+           msgBox.style.display = 'none'; 
+    
+           // Envoi du formulaire
+           // Service ID : service_e9ukma4 (celui de ta capture)
+           // Template ID : template_o58zyjp (celui que tu viens de donner)
+           emailjs.sendForm('service_e9ukma4', 'template_o58zyjp', this)
+               .then(function() {
+                   // SUCCÈS
+                   console.log('SUCCESS!');
+                   btn.innerText = originalText;
+                   btn.disabled = false;
+                   
+                   // Message vert pour le client
+                   msgBox.className = 'alert success';
+                   msgBox.innerHTML = '<strong>Merci !</strong> Votre demande a bien été envoyée à Bes.';
+                   msgBox.style.display = 'block';
+                   
+                   // On vide les champs
+                   document.getElementById('contact-form').reset();
+                   
+               }, function(error) {
+                   // ERREUR
+                   console.log('FAILED...', error);
+                   btn.innerText = originalText;
+                   btn.disabled = false;
+    
+                   // Message rouge
+                   msgBox.className = 'alert error';
+                   msgBox.innerHTML = '<strong>Oups !</strong> Une erreur technique est survenue. Contactez-nous via Instagram.';
+                   msgBox.style.display = 'block';
+               });
+       });
+    </script>
 </body>
+
 </html>
