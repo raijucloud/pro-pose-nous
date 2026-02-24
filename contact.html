@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="./style.css">
     <title>Contact - ProPose&Nous</title>
     <style>
+        /* Styles pour les messages de confirmation/erreur */
         .alert { padding: 15px; margin-bottom: 20px; border-radius: 5px; text-align: center; max-width: 800px; margin: 0 auto 20px auto; display: none; }
         .alert.success { background-color: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
         .alert.error { background-color: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
@@ -95,6 +96,15 @@
                     </div>
                 </div>
 
+                <div class="form-row" style="margin-top: 10px;">
+                    <div class="form-group" style="flex-direction: row; gap: 10px; align-items: start;">
+                        <input type="checkbox" id="rgpd" name="rgpd" required style="width: auto; margin-top: 5px; cursor: pointer;">
+                        <label for="rgpd" style="font-size: 0.9rem; font-weight: normal; cursor: pointer;">
+                            En soumettant ce formulaire, j'accepte que mes informations soient utilisées pour traiter ma demande de rendez-vous.
+                        </label>
+                    </div>
+                </div>
+
                 <div class="form-actions">
                     <button type="submit" class="btn-submit">Réserver</button>
                 </div>
@@ -118,29 +128,44 @@
             </a>
         </div>
     </footer>
+
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-    
+
     <script type="text/javascript">
+       // --- 1. GESTION DE LA DATE (Bloque dates passées + jour même) ---
+       document.addEventListener('DOMContentLoaded', function() {
+           const dateInput = document.getElementById('dateResa');
+           
+           const today = new Date();
+           today.setDate(today.getDate() + 1); // Bloque aujourd'hui, commence à demain
+           
+           const year = today.getFullYear();
+           const month = String(today.getMonth() + 1).padStart(2, '0');
+           const day = String(today.getDate()).padStart(2, '0');
+           
+           // Applique la restriction min="YYYY-MM-DD"
+           dateInput.min = `${year}-${month}-${day}`;
+       });
+
+       // --- 2. INITIALISATION EMAILJS ---
        (function(){
-          // Initialisation avec ta Public Key
           emailjs.init("1jLEfuyrnDxYev4-k");
        })();
-    
+
+       // --- 3. GESTION DE L'ENVOI DU FORMULAIRE ---
        document.getElementById('contact-form').addEventListener('submit', function(event) {
-           event.preventDefault(); // Bloque le rechargement de page
-    
+           event.preventDefault(); // Empêche le rechargement de la page
+
            const btn = this.querySelector('.btn-submit');
            const msgBox = document.getElementById('msg-box');
            
-           // Indication visuelle (Chargement)
+           // Effet de chargement
            const originalText = btn.innerText;
            btn.innerText = 'Envoi en cours...';
            btn.disabled = true;
            msgBox.style.display = 'none'; 
-    
-           // Envoi du formulaire
-           // Service ID : service_e9ukma4 (celui de ta capture)
-           // Template ID : template_o58zyjp (celui que tu viens de donner)
+
+           // Envoi via EmailJS avec tes IDs
            emailjs.sendForm('service_e9ukma4', 'template_o58zyjp', this)
                .then(function() {
                    // SUCCÈS
@@ -148,12 +173,12 @@
                    btn.innerText = originalText;
                    btn.disabled = false;
                    
-                   // Message vert pour le client
+                   // Message vert
                    msgBox.className = 'alert success';
                    msgBox.innerHTML = '<strong>Merci !</strong> Votre demande a bien été envoyée à Bes.';
                    msgBox.style.display = 'block';
                    
-                   // On vide les champs
+                   // Vide le formulaire
                    document.getElementById('contact-form').reset();
                    
                }, function(error) {
@@ -161,7 +186,7 @@
                    console.log('FAILED...', error);
                    btn.innerText = originalText;
                    btn.disabled = false;
-    
+
                    // Message rouge
                    msgBox.className = 'alert error';
                    msgBox.innerHTML = '<strong>Oups !</strong> Une erreur technique est survenue. Contactez-nous via Instagram.';
@@ -170,5 +195,4 @@
        });
     </script>
 </body>
-
 </html>
