@@ -214,18 +214,71 @@ input:focus, select:focus { border-color: #5c0000; outline: none; }
 .form-actions { text-align: center; margin-top: 20px; }
 .btn-submit { background-color: #5c0000; color: white; border: none; padding: 15px 40px; font-size: 1.1rem; border-radius: 5px; cursor: pointer; transition: background-color 0.3s, transform 0.2s; }
 .btn-submit:hover { background-color: #800000; transform: scale(1.05); }
+
+/* --- FOOTER CORRIGÉ --- */
 footer {
     background-color: #5c0000;
-    padding: 20px;
+    padding: 20px 40px;
     margin-top: auto;
     display: flex;
-    justify-content: space-around;
+    flex-direction: column; /* On empile verticalement */
     align-items: center;
+    gap: 20px;
 }
-.footer-logo { width: 90px; height: 90px; border-radius: 50%; object-fit: cover; border: 2px solid #ffffff50; }
-.social-icons { display: flex; gap: 25px; align-items: center; }
-.social-icons img { width: 45px; height: 45px; object-fit: contain; border-radius: 10px; transition: transform 0.2s ease; }
-.social-icons img:hover { transform: scale(1.2) rotate(5deg); }
+
+.footer-top {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    align-items: center;
+    max-width: 1200px;
+}
+
+.footer-logo { 
+    width: 90px; 
+    height: 90px; 
+    border-radius: 50%; 
+    object-fit: cover; 
+    border: 2px solid #ffffff50; 
+}
+
+.social-icons { 
+    display: flex; 
+    gap: 25px; 
+    align-items: center; 
+}
+
+.social-icons img { 
+    width: 45px; 
+    height: 45px; 
+    object-fit: contain; 
+    border-radius: 10px; 
+    transition: transform 0.2s ease; 
+}
+
+.social-icons img:hover { 
+    transform: scale(1.2) rotate(5deg); 
+}
+
+.footer-legal {
+    width: 100%;
+    text-align: center;
+    padding-top: 15px;
+    border-top: 1px solid rgba(255, 204, 204, 0.2);
+}
+
+.footer-legal a {
+    color: #ffcccc;
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: color 0.3s ease;
+}
+
+.footer-legal a:hover {
+    color: #fff;
+    text-decoration: underline;
+}
+
 @media (max-width: 900px) {
     header { flex-direction: column; padding: 20px; gap: 20px; }
     .Liens { flex-direction: column; align-items: center; gap: 15px; width: 100%; }
@@ -241,5 +294,7 @@ footer {
     .photos { grid-template-columns: 1fr; }
     .photos img { height: 300px; }
     .form-row { flex-direction: column; }
-    footer { flex-direction: column; gap: 20px; }
+    
+    /* Footer Mobile */
+    .footer-top { flex-direction: column; gap: 20px; }
 }
