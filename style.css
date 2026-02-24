@@ -245,10 +245,9 @@ footer {
     gap: 15px;             /* Espace réduit entre les icônes */
 }
 .social-icons img {
-    height: 30px;          /* Icônes plus petites */
-    width: 30px;
     object-fit: contain;
     transition: transform 0.2s;
+    border-radius:15px;
 }
 .social-icons img:hover {
     transform: scale(1.2);
@@ -297,6 +296,7 @@ footer {
     /* Footer Mobile */
     .footer-top { flex-direction: column; gap: 20px; }
 }
+
 
 
 
