@@ -215,60 +215,67 @@ input:focus, select:focus { border-color: #5c0000; outline: none; }
 .btn-submit { background-color: #5c0000; color: white; border: none; padding: 15px 40px; font-size: 1.1rem; border-radius: 5px; cursor: pointer; transition: background-color 0.3s, transform 0.2s; }
 .btn-submit:hover { background-color: #800000; transform: scale(1.05); }
 
-/* --- FOOTER CORRECTIF FINAL --- */
+/* --- FOOTER FIN ET HORIZONTAL --- */
 footer {
     background-color: #5c0000;
-    padding: 30px 10px;
+    padding: 0 20px;       /* 0 en haut/bas, 20px sur les côtés */
+    height: 60px;          /* Hauteur fixe pour être fin */
     margin-top: auto;
-    /* On force l'empilement vertical */
+    
     display: flex;
-    flex-direction: column !important; 
-    align-items: center !important;
-    justify-content: center !important;
-    gap: 20px; /* Espace entre les étages */
+    flex-direction: row;   /* Tout sur une ligne ! */
+    justify-content: space-between; /* Espace égal entre les 3 blocs */
+    align-items: center;   /* Centrage vertical parfait */
+    
+    border-top: 2px solid #3d0000;
 }
 
-/* 1. Le Logo (Centré) */
+/* 1. Logo (Réduit pour tenir dans la barre fine) */
 .footer-logo {
-    display: block;
-    width: 80px;
-    height: 80px;
+    height: 45px;          /* Beaucoup plus petit */
+    width: 45px;
     border-radius: 50%;
-    border: 2px solid rgba(255, 255, 255, 0.3);
-    margin: 0 auto; /* Sécurité pour centrer */
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    vertical-align: middle;
 }
 
-/* 2. Les Icônes (Centrées) */
+/* 2. Icônes */
 .social-icons {
     display: flex;
-    justify-content: center;
-    gap: 25px;
-    width: 100%;
+    gap: 15px;             /* Espace réduit entre les icônes */
 }
 .social-icons img {
-    width: 40px;
-    height: 40px;
-    transition: transform 0.3s;
+    height: 30px;          /* Icônes plus petites */
+    width: 30px;
+    object-fit: contain;
+    transition: transform 0.2s;
 }
 .social-icons img:hover {
-    transform: scale(1.1);
+    transform: scale(1.2);
 }
 
-/* 3. Le Lien Légal (Centré + Rose pâle) */
-.footer-content.legal-link {
-    text-align: center;
-    width: 100%;
-}
-.footer-content.legal-link a {
-    color: #ffcccc !important; /* On force le rose, adieu le bleu moche */
+/* 3. Lien RGPD (Rose pâle forcé) */
+.footer-right a {
+    color: #ffcccc !important; /* Rose pâle obligatoire */
     text-decoration: none;
-    font-size: 0.8rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
+    font-size: 0.8rem;     /* Texte discret */
+    font-weight: normal;
+    white-space: nowrap;   /* Empêche le texte de passer à la ligne */
 }
-.footer-content.legal-link a:hover {
-    color: #fff !important;
+.footer-right a:hover {
+    color: white !important;
     text-decoration: underline;
+}
+
+/* Adaptation Mobile (Pour que ça ne casse pas sur petit écran) */
+@media (max-width: 600px) {
+    footer {
+        height: auto;      /* On laisse la hauteur s'adapter */
+        padding: 10px;
+        flex-wrap: wrap;   /* Autorise le passage à la ligne si écran trop petit */
+        justify-content: center;
+        gap: 10px;
+    }
 }
 
 @media (max-width: 900px) {
@@ -290,5 +297,6 @@ footer {
     /* Footer Mobile */
     .footer-top { flex-direction: column; gap: 20px; }
 }
+
 
 
