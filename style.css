@@ -215,64 +215,60 @@ input:focus, select:focus { border-color: #5c0000; outline: none; }
 .btn-submit { background-color: #5c0000; color: white; border: none; padding: 15px 40px; font-size: 1.1rem; border-radius: 5px; cursor: pointer; transition: background-color 0.3s, transform 0.2s; }
 .btn-submit:hover { background-color: #800000; transform: scale(1.05); }
 
-/* --- FOOTER FINAL (Centré) --- */
+/* --- FOOTER CORRECTIF FINAL --- */
 footer {
     background-color: #5c0000;
-    padding: 30px 20px;
+    padding: 30px 10px;
     margin-top: auto;
+    /* On force l'empilement vertical */
     display: flex;
-    flex-direction: column; /* On empile tout : Logo > Icônes > Texte */
-    align-items: center;    /* Tout est parfaitement centré */
+    flex-direction: column !important; 
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 20px; /* Espace entre les étages */
+}
+
+/* 1. Le Logo (Centré) */
+.footer-logo {
+    display: block;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    margin: 0 auto; /* Sécurité pour centrer */
+}
+
+/* 2. Les Icônes (Centrées) */
+.social-icons {
+    display: flex;
     justify-content: center;
-    gap: 25px;              /* Espace propre entre les éléments */
-    border-top: 4px solid #3d0000; /* Petite finition premium en haut */
+    gap: 25px;
+    width: 100%;
+}
+.social-icons img {
+    width: 40px;
+    height: 40px;
+    transition: transform 0.3s;
+}
+.social-icons img:hover {
+    transform: scale(1.1);
 }
 
-/* Logo */
-.footer-logo { 
-    width: 90px; 
-    height: 90px; 
-    border-radius: 50%; 
-    object-fit: cover; 
-    border: 3px solid rgba(255, 255, 255, 0.2); 
-    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+/* 3. Le Lien Légal (Centré + Rose pâle) */
+.footer-content.legal-link {
+    text-align: center;
+    width: 100%;
 }
-
-/* Icônes */
-.social-icons { 
-    display: flex; 
-    gap: 30px; /* Espace entre les réseaux */
-    align-items: center; 
-}
-
-.social-icons img { 
-    width: 40px; 
-    height: 40px; 
-    object-fit: contain; 
-    border-radius: 8px; 
-    transition: transform 0.3s ease; 
-    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
-}
-
-.social-icons img:hover { 
-    transform: scale(1.15) rotate(5deg); 
-}
-
-/* Lien Mentions Légales */
-.footer-legal a {
-    color: #ffcccc !important; /* !important force la couleur rose pâle */
+.footer-content.legal-link a {
+    color: #ffcccc !important; /* On force le rose, adieu le bleu moche */
     text-decoration: none;
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     text-transform: uppercase;
     letter-spacing: 1px;
-    opacity: 0.8;
-    transition: opacity 0.3s;
-    border-bottom: 1px dotted transparent;
 }
-
-.footer-legal a:hover {
-    opacity: 1;
-    border-bottom: 1px dotted #ffcccc;
+.footer-content.legal-link a:hover {
+    color: #fff !important;
+    text-decoration: underline;
 }
 
 @media (max-width: 900px) {
@@ -294,4 +290,5 @@ footer {
     /* Footer Mobile */
     .footer-top { flex-direction: column; gap: 20px; }
 }
+
 
