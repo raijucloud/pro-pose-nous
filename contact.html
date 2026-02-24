@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>Contact - ProPose&Nous</title>
+    <style>
+        .alert { padding: 15px; margin-bottom: 20px; border-radius: 5px; text-align: center; max-width: 800px; margin: 0 auto 20px auto; display: none; }
+        .alert.success { background-color: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+        .alert.error { background-color: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="img1">
+            <a href="index.html">
+                <img src="light_logo.jpg" alt="Logo ProPose&Nous">
+            </a>
+        </div>
+
+        <nav class="Liens">
+            <a href="index.html">Accueil</a>
+            <a href="prix.html">Prix</a>
+            <a href="photos.html">Photos</a>
+            <a href="contact.html" class="active">Contact</a>
+        </nav>
+    </header>
+
+    <div class="main-content">
+        <h1>Réservation & Contact</h1>
+
+        <div id="msg-box" class="alert"></div>
+
+        <div class="form-container">
+            <form id="contact-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="nom">Nom</label>
+                        <input id="nom" name="nom" type="text" placeholder="Votre nom" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="prenom">Prénom</label>
+                        <input id="prenom" name="prenom" type="text" placeholder="Votre prénom" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input id="email" name="email" type="email" placeholder="email@exemple.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="tel">Téléphone</label>
+                        <input id="tel" name="tel" type="tel" placeholder="04 XX XX XX XX" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="typePiercing">Type de piercing</label>
+                        <select id="typePiercing" name="typePiercing" required>
+                            <option value="">-- Sélectionnez --</option>
+                            <option value="Lobe">Lobe</option>
+                            <option value="2 Lobes">2 Lobes</option>
+                            <option value="Helix">Helix</option>
+                            <option value="Conch">Conch</option>
+                            <option value="Tragus">Tragus</option>
+                            <option value="Anti Helix">Anti Helix</option>
+                            <option value="Rook">Rook</option>
+                            <option value="Snug">Snug</option>
+                            <option value="Daith">Daith</option>
+                            <option value="Anti Tragus">Anti Tragus</option>
+                            <option value="Industriel">Industriel</option>
+                            <option value="Arcade">Arcade</option>
+                            <option value="Nostril">Nostril</option>
+                            <option value="Septum">Septum</option>
+                            <option value="Bridge">Bridge</option>
+                            <option value="Labret">Labret</option>
+                            <option value="Medusa">Medusa</option>
+                            <option value="Monroe">Monroe</option>
+                            <option value="Madonna">Madonna</option>
+                            <option value="Langue">Langue</option>
+                            <option value="Smiley">Smiley</option>
+                            <option value="Nombril">Nombril</option>
+                            <option value="Téton">Téton</option>
+                            <option value="2 Tétons">2 Tétons</option>
+                            <option value="Microdermal">Microdermal</option>
+                            <option value="Génitaux">Génitaux</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="dateResa">Date souhaitée</label>
+                        <input id="dateResa" name="dateResa" type="date" required>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn-submit">Réserver</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <img src="dark_logo.jpg" class="footer-logo" alt="Logo noir">
+        </div>
+        <div class="social-icons">
+            <a href="https://instagram.com/pro_pose_body_piercing_by_bes" target="_blank">
+                <img src="instagram-logo-vector-png-ir8f58dvmxlfkgac.png" alt="Instagram">
+            </a>
+            <a href="https://www.tiktok.com/@bodypiercingbybes" target="_blank">
+                <img src="logo-medias-sociaux-vector-tiktok_1093524-451.avif" alt="TikTok">
+            </a>
+            <a href="https://wa.me/0495282012" target="_blank">
+                <img src="whatsapp-logo-png_seeklogo-333276.png" alt="WhatsApp">
+            </a>
+        </div>
+    </footer>
+</body>
+</html>
